@@ -1,0 +1,27 @@
+{
+  "name": "qa0323a-seleniumwebdriver",
+  "version": "1.0.0",
+  "description": "Testes sistema web utilizando o Selenium Webdriver",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/cucumber-js -f @cucumber/pretty-formatter features/* --format html:cucumber-report.html"
+  },
+  "keywords": [
+    "selenium",
+    "webdriver"
+  ],
+  "author": "Anne Rocha",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^9.5.1",
+    "@cucumber/pretty-formatter": "^1.0.0"
+  },
+  "dependencies": {
+    "assert": "^2.1.0",
+    "chromedriver": "^117.0.3",
+    "geckodriver": "^4.2.1",
+    "selenium-webdriver": "^4.13.0",
+    "webdriver": "^8.16.17",
+    "webdriver-manager": "^12.1.9"
+  }
+}
