@@ -1,0 +1,14 @@
+{
+    "cliente" : [
+    {
+        "nome": "Anne Rocha",
+        "email": ""
+    } 
+   ],
+   "anunciante" : [
+    {
+        "nome": "Antonio Garcia",
+        "email": ""
+    } 
+   ]
+}

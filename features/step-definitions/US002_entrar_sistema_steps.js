@@ -3,6 +3,10 @@ const {Given, Then, When, Before, After} = require('@cucumber/cucumber');
 const assert = require('assert')
 const webdriver = require('selenium-webdriver');
 
+//VARIAVEIS
+const string = "anne12@mail.com"; 
+const string2 = "123456";
+
 //SETUP CHROME DRIVER
 var chrome = require('selenium-webdriver/chrome');
 const ChromeDriver = require('chromedriver');
@@ -14,9 +18,8 @@ let driver = new webdriver.Builder()
     .setChromeOptions(options)
     .build();
 
- Given('que o usuario esteja na tela de login', {timeout: 30 * 1000}, async () => {  
-
-    await driver.get('http://publicazo.insprak.com/sign_in');
+ Given('que o usuario esteja na tela de login', {timeout: 30 * 1000}, async () => {      
+    await driver.get('http://locahost:5013/login');
     await driver.manage().window().setRect({ width: 700, height: 400 }); 
   });
 
@@ -31,11 +34,11 @@ let driver = new webdriver.Builder()
     await driver.findElement(By.name("commit")).click()
   });
 
-  When('o usuario informar e-mail e senha inválidos', {timeout: 30 * 1000}, async () => {  
+  When('o usuario informar {string} e {string} inválidos', {timeout: 30 * 1000}, async (string, string2) => {  
     await driver.findElement(By.id("user_email")).click()
-    await driver.findElement(By.id("user_email")).sendKeys("anne12@mail.com")
+    await driver.findElement(By.id("user_email")).sendKeys(string)
     await driver.findElement(By.id("user_password")).click()
-    await driver.findElement(By.id("user_password")).sendKeys("654321")   
+    await driver.findElement(By.id("user_password")).sendKeys(string2)   
   });
 
   Then('clicar no botão entrar e exibir a mensagem de erro', {timeout: 30 * 1000}, async () => {  
