@@ -24,6 +24,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18 
-      - run: npm install
-      - run: npx webdriver-manager update --versions.chrome 119.0.6045.159
+      - run: npm install 
+      - run: npm install chromedriver geckodriver
       - run: npm test 
