@@ -51,6 +51,17 @@ Given('I visit publicazo homepage', {timeout: 15 * 1000}, async () => {  })
 .setChromeOptions(options)
 ```
 
+ ```bash
+# Caso o chrome seja atualizado, é preciso atualizar também o arquivo package.json e alterar a versão do chrome_driver.
+$ npx webdriver-manager update
+```
+ 
+ ```bash
+# Atualizar o webdriver do MAC
+$ sudo webdriver-manager update --versions.chrome 109.0.5414.74
+```
+
+
 
 
 
