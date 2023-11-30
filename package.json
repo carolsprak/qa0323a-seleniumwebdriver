@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "assert": "^2.1.0",
-    "chromedriver": "^117.0.3",
+    "chromedriver": "^119.0.6",
     "geckodriver": "^4.2.1",
     "selenium-webdriver": "^4.13.0",
     "webdriver": "^8.16.17",
