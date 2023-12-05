@@ -19,7 +19,7 @@ let driver = new webdriver.Builder()
     .build();
 
  Given('que o usuario esteja na tela de login', {timeout: 30 * 1000}, async () => {      
-    await driver.get('http://locahost:5013/login');
+    await driver.get('http://publicazo.insprak.com/sign_in');
     await driver.manage().window().setRect({ width: 700, height: 400 }); 
   });
 

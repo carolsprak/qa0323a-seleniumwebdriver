@@ -58,7 +58,7 @@ $ npx webdriver-manager update
  
  ```bash
 # Atualizar o webdriver do MAC
-$ sudo webdriver-manager update --versions.chrome 109.0.5414.74
+$ npx webdriver-manager update --versions.chrome 119.0.6045.159
 ```
 
 
