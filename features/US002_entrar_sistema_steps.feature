@@ -11,12 +11,9 @@ Scenario: Pré-condição - Usuário estar na tela de login
     Then clicar no botão entrar e exibir a mensagem de erro de campo obrigatório
 
 Scenario: Não autorizar a entrada no sistema com dados inválidos
-    When o usuario informar "email" e "senha" inválidos
+    When o usuario informar email e senha inválidos
     Then clicar no botão entrar e exibir a mensagem de erro 
 
 Scenario: Usuário entrar no sistema com sucesso
-    When o usuario informar e-mail e senha válidos
+    When o usuario informar email e senha válidos
     Then clicar no botão entrar e exibir a mensagem de sucesso
-
-Example: 
-

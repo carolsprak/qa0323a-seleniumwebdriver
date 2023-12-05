@@ -4,8 +4,8 @@ const assert = require('assert')
 const webdriver = require('selenium-webdriver');
 
 //VARIAVEIS
-const string = "anne12@mail.com"; 
-const string2 = "123456";
+ 
+let vars = {}
 
 //SETUP CHROME DRIVER
 var chrome = require('selenium-webdriver/chrome');
@@ -19,7 +19,7 @@ let driver = new webdriver.Builder()
     .build();
 
  Given('que o usuario esteja na tela de login', {timeout: 30 * 1000}, async () => {      
-    await driver.get('http://publicazo.insprak.com/sign_in');
+    await driver.get('http://localhost:5013/sign_in');
     await driver.manage().window().setRect({ width: 700, height: 400 }); 
   });
 
@@ -32,31 +32,41 @@ let driver = new webdriver.Builder()
 
   Then('clicar no botão entrar e exibir a mensagem de erro de campo obrigatório', {timeout: 30 * 1000}, async () => {  
     await driver.findElement(By.name("commit")).click()
+    await driver.findElement(By.css(".toast-message")).click()   
   });
 
-  When('o usuario informar {string} e {string} inválidos', {timeout: 30 * 1000}, async (string, string2) => {  
-    await driver.findElement(By.id("user_email")).click()
-    await driver.findElement(By.id("user_email")).sendKeys(string)
-    await driver.findElement(By.id("user_password")).click()
-    await driver.findElement(By.id("user_password")).sendKeys(string2)   
-  });
-
-  Then('clicar no botão entrar e exibir a mensagem de erro', {timeout: 30 * 1000}, async () => {  
-    await driver.findElement(By.name("commit")).click() 
-   
-  });
-
-  When('o usuario informar e-mail e senha válidos',  {timeout: 30 * 1000}, async () => {  
-
+  When('o usuario informar email e senha inválidos', {timeout: 30 * 1000}, async () => {  
     await driver.findElement(By.id("user_email")).click()
     await driver.findElement(By.id("user_email")).sendKeys("anne12@mail.com")
     await driver.findElement(By.id("user_password")).click()
     await driver.findElement(By.id("user_password")).sendKeys("123456")
   });
 
+  Then('clicar no botão entrar e exibir a mensagem de erro', {timeout: 30 * 1000}, async () => {  
+    await driver.findElement(By.name("commit")).click() 
+    await driver.findElement(By.css(".toast-message")).click() 
+    //await driver.findElement(By.xpath("(//div[contains(.,'Email ou senha inválidos.')])[3]")).click()   
+    //assert(await driver.findElement(By.css(".toast-message")).getText() == "Email ou senha inválidos.")
+  });
+
+  When('o usuario informar email e senha válidos',  {timeout: 30 * 1000}, async () => {  
+    await driver.findElement(By.id("user_email")).click()
+    //wait driver.findElement(By.id("user_email")).clear()
+    await driver.findElement(By.id("user_email")).sendKeys("anne@mail.com")
+    await driver.findElement(By.id("user_password")).click()
+    //await driver.findElement(By.id("user_password")).clear()
+    await driver.findElement(By.id("user_password")).sendKeys("123456")
+    //vars["email"] = await driver.findElement(By.xpath("//input[@name=\'user[email]\']")).getAttribute("value")
+    //console.log(vars["email"])
+  });
+
   Then('clicar no botão entrar e exibir a mensagem de sucesso', {timeout: 30 * 1000}, async () => {  
-    driver.findElement(By.name("commit")).click()
-    driver.findElement(By.css(".toast-message")).click()
-    driver.close()
+    await driver.findElement(By.name("commit")).click()
+    await driver.findElement(By.css(".toast-message")).click() 
+    
+    //vars["message"] = await driver.findElement(By.css(".toast")).getText()
+    //console.log(vars["message"] + " AQUI")
+    //assert(await driver.findElement(By.css(".toast-message")).getText() == "Logado com sucesso.")
+    await driver.close()
   });
 
