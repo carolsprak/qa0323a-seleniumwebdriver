@@ -45,27 +45,27 @@ let driver = new webdriver.Builder()
   Then('clicar no botão entrar e exibir a mensagem de erro', {timeout: 30 * 1000}, async () => {  
     await driver.findElement(By.name("commit")).click() 
     await driver.findElement(By.css(".toast-message")).click() 
-    //await driver.findElement(By.xpath("(//div[contains(.,'Email ou senha inválidos.')])[3]")).click()   
-    //assert(await driver.findElement(By.css(".toast-message")).getText() == "Email ou senha inválidos.")
+    await driver.findElement(By.xpath("(//div[contains(.,'Email ou senha inválidos.')])[3]")).click()   
+    assert(await driver.findElement(By.css(".toast-message")).getText() == "Email ou senha inválidos.")
   });
 
   When('o usuario informar email e senha válidos',  {timeout: 30 * 1000}, async () => {  
     await driver.findElement(By.id("user_email")).click()
-    //wait driver.findElement(By.id("user_email")).clear()
+    await driver.findElement(By.id("user_email")).clear()
     await driver.findElement(By.id("user_email")).sendKeys("anne@mail.com")
     await driver.findElement(By.id("user_password")).click()
-    //await driver.findElement(By.id("user_password")).clear()
+    await driver.findElement(By.id("user_password")).clear()
     await driver.findElement(By.id("user_password")).sendKeys("123456")
-    //vars["email"] = await driver.findElement(By.xpath("//input[@name=\'user[email]\']")).getAttribute("value")
-    //console.log(vars["email"])
+    vars["email"] = await driver.findElement(By.xpath("//input[@name=\'user[email]\']")).getAttribute("value")
+    console.log(vars["email"])
   });
 
   Then('clicar no botão entrar e exibir a mensagem de sucesso', {timeout: 30 * 1000}, async () => {  
     await driver.findElement(By.name("commit")).click()
     await driver.findElement(By.css(".toast-message")).click() 
     
-    //vars["message"] = await driver.findElement(By.css(".toast")).getText()
-    //console.log(vars["message"] + " AQUI")
+    vars["message"] = await driver.findElement(By.css(".toast-message")).getText()
+    console.log(vars["message"] + " AQUI")
     //assert(await driver.findElement(By.css(".toast-message")).getText() == "Logado com sucesso.")
     await driver.close()
   });
