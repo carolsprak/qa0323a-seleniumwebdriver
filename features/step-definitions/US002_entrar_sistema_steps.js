@@ -19,7 +19,7 @@ let driver = new webdriver.Builder()
     .build();
 
  Given('que o usuario esteja na tela de login', {timeout: 30 * 1000}, async () => {      
-    await driver.get('http://localhost:5013/sign_in');
+    await driver.get('http://publicazo.insprak.com/sign_in');
     await driver.manage().window().setRect({ width: 700, height: 400 }); 
   });
 
@@ -66,7 +66,7 @@ let driver = new webdriver.Builder()
     
     vars["message"] = await driver.findElement(By.css(".toast-message")).getText()
     console.log(vars["message"] + " AQUI")
-    //assert(await driver.findElement(By.css(".toast-message")).getText() == "Logado com sucesso.")
+    assert(await driver.findElement(By.css(".toast-message")).getText() == "Logado com sucesso.")
     await driver.close()
   });
 

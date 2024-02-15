@@ -14,7 +14,7 @@ $ npm install chromedriver geckodriver
 ```
  ```bash
 # Criar a pasta features > incluir arquivo BDD
-# Criar features/step-definitions > incluir arquivo JS
+# Criar features/step-definitions > incluir arquivo JS em branco
 # Criar .gitignore
 # No arquivo package.json > incluir script test
 $ "node_modules/.bin/cucumber-js -f @cucumber/pretty-formatter features/* --format html:cucumber-report.html"
