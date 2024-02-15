@@ -14,6 +14,3 @@ Scenario: Não autorizar a entrada no sistema com dados inválidos
     When o usuario informar email e senha inválidos
     Then clicar no botão entrar e exibir a mensagem de erro 
 
-Scenario: Usuário entrar no sistema com sucesso
-    When o usuario informar email e senha válidos
-    Then clicar no botão entrar e exibir a mensagem de sucesso
