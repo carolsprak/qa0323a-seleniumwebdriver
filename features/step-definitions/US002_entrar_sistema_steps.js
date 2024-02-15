@@ -11,11 +11,11 @@ let vars = {}
 var chrome = require('selenium-webdriver/chrome');
 const ChromeDriver = require('chromedriver');
 const {By} = require('selenium-webdriver');
-//var options   = new chrome.Options().headless();
+var options   = new chrome.Options().headless();
 let driver = new webdriver.Builder()
     .forBrowser('chrome')
     .withCapabilities(webdriver.Capabilities.chrome())
-  //  .setChromeOptions(options)
+    .setChromeOptions(options)
     .build();
 
  Given('que o usuario esteja na tela de login', {timeout: 30 * 1000}, async () => {      
