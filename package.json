@@ -7,7 +7,7 @@
     "test": "node_modules/.bin/cucumber-js -f @cucumber/pretty-formatter features/* --format html:cucumber-report.html"
   },
   "keywords": [
-    "selenium",
+    "selenium", 
     "webdriver"
   ],
   "author": "Anne Rocha",
